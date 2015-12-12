@@ -1,0 +1,2 @@
+# djmo
+django idea test
