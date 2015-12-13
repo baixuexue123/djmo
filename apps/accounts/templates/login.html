@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="100Credit">
+    <meta name="keywords" content="100Credit">
+    <meta name="author" content="100Credit">
+    <link rel="icon" href="{{ STATIC_URL }}images/favicon.ico">
+    <title>登录</title>
+    <link href="{{ STATIC_URL }}bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <style type="text/css">
+        body { background-image: url("{{ STATIC_URL }}images/bg.jpg");}
+        .left-inner-addon { position: relative; }
+        .left-inner-addon input, .left-inner-addon textarea { padding-left: 30px; }
+        .left-inner-addon span { position: absolute; padding: 15px 12px; }
+        .left-inner-addon button { padding: 10px; }
+    </style>
+    <img src="{{ STATIC_URL }}images/logo1.png" class="img-responsive" alt="Responsive image" style="margin: 10px 0 10px 10px">
+
+    <div class="modal show" style="margin-top: 150px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="text-center text-info">PII提取系统</h2>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="form-group left-inner-addon">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <input type="text" name="username" class="form-control input-lg" placeholder="账号" value="{{ username }}" required>
+                        </div>
+                        <div class="form-group left-inner-addon">
+                            <span class="glyphicon glyphicon-lock"></span>
+                            <input type="password" name="password" class="form-control input-lg" placeholder="密码" value="{{ password }}" required>
+                        </div>
+                        {% include '_messages.html' %}
+                        <div class="form-group">
+                            <button class="btn btn-info btn-lg btn-block" type="submit">登录</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container navbar-fixed-bottom">
+        <p align="center" style="font-size: 14px">Copyright © 2015 百融（北京）金融信息服务股份有限公司 All Rights Reserved.</p>
+    </div>
+    <script src="{{ STATIC_URL }}jquery/1.11.3/jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>

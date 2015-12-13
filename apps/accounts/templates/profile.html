@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}个人资料{% endblock %}
+{% block content %}
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/"><img src="{{ STATIC_URL }}images/logo1.png" alt="Brand" style="margin-top: -11px" title="PII提取系统"></a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="{% url 'down' username=user.username %}">数据下载</a></li>
+            <li><a href="{% url 'tasks' username=user.username %}">任务列表</a></li>
+        </ul>
+        <div id="navbar" class="collapse navbar-collapse navbar-right">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-user"></i>{{ user.first_name }}<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{% url 'profile' %}"><i class="glyphicon glyphicon-user"></i>个人资料</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{% url 'logout' %}"><i class="glyphicon glyphicon-off"></i>退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <div class="container">
+
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="{% url 'profile' %}">我的资料</a></li>
+            <li role="presentation"><a href="{% url 'reset-pwd' %}">修改密码</a></li>
+        </ul>
+
+        <table class="table table-bordered table-hover">
+            <tbody>
+                <tr>
+                    <th scope="row">姓名</th>
+                    <td>{{ user.first_name }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">账号</th>
+                    <td>{{ user.username }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">邮箱</th>
+                    <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">角色</th>
+                    <td>{{ user.profile.role.role }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}
