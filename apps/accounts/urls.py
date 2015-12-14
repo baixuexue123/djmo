@@ -1,15 +1,16 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
+
 from django.conf.urls import patterns, url
 
-from .views import LoginView, ResetPwdView, logout_view, profile_view, changepwd_done
+from .views import LoginView, ChangePasswordView, logout_view, profile_view, change_pwd_done
 
 
-urlpatterns = patterns('',
-
+urlpatterns = [
     url(r'^login/$', LoginView.as_view(), name='login'),
     url(r'^logout/$', logout_view, name='logout'),
-    url(r'^profile/$', profile_view, name='profile'),
-    url(r'^changepwd/$', ResetPwdView.as_view(), name='reset-pwd'),
-    url(r'^changepwddone/$', changepwd_done, name='changepwddone'),
-)
+    url(r'^(?P<username>[\.\w]+)/profile/$', profile_view, name='profile'),
+    url(r'^(?P<username>[\.\w]+)/changepwd/$', ChangePasswordView.as_view(), name='change_pwd'),
+    url(r'^changepwddone/$', change_pwd_done, name='change_pwd_done'),
+]

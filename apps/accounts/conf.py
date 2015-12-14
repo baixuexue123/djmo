@@ -6,14 +6,10 @@ import importlib
 
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
-from django.utils.translation import get_language_info
 
 import pytz
 
 from appconf import AppConf
-
-from account.timezones import TIMEZONES
-from account.languages import LANGUAGES
 
 
 def load_path_attr(path):
@@ -55,8 +51,6 @@ class AccountAppConf(AppConf):
     DELETION_EXPUNGE_CALLBACK = "account.callbacks.account_delete_expunge"
     DELETION_EXPUNGE_HOURS = 48
     HOOKSET = "account.hooks.AccountDefaultHookSet"
-    TIMEZONES = TIMEZONES
-    LANGUAGES = LANGUAGES
     USE_AUTH_AUTHENTICATE = False
 
     def configure_deletion_mark_callback(self, value):

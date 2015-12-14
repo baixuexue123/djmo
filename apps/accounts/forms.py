@@ -1,12 +1,18 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import unicode_literals
+
 from django import forms
-from django.utils.translation import ugettext_lazy as _
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(max_length=100)
+
+    username = forms.CharField(max_length=24)
     password = forms.CharField(max_length=24)
+
+    def __init__(self, *args, **kwargs):
+        super(LoginForm, self).__init__(*args, **kwargs)
+        self.initial = self.initial or {'username': '', 'password': ''}
 
 
 class ChangePasswordForm(forms.Form):
@@ -16,16 +22,18 @@ class ChangePasswordForm(forms.Form):
     password_new_confirm = forms.CharField(max_length=24)
 
     def __init__(self, *args, **kwargs):
-        self.user = kwargs.pop("user")
+        if 'user' in kwargs:
+            self.user = kwargs.pop('user')
         super(ChangePasswordForm, self).__init__(*args, **kwargs)
+        self.initial = self.initial or {'password_current': '', 'password_new': '', 'password_new_confirm': ''}
 
     def clean_password_current(self):
-        if not self.user.check_password(self.cleaned_data.get("password_current")):
-            raise forms.ValidationError(_("Please type your current password."))
-        return self.cleaned_data["password_current"]
+        if not self.user.check_password(self.cleaned_data.get('password_current')):
+            raise forms.ValidationError(u'原始密码错误')
+        return self.cleaned_data['password_current']
 
     def clean_password_new_confirm(self):
-        if "password_new" in self.cleaned_data and "password_new_confirm" in self.cleaned_data:
-            if self.cleaned_data["password_new"] != self.cleaned_data["password_new_confirm"]:
-                raise forms.ValidationError(_("You must type the same password each time."))
-        return self.cleaned_data["password_new_confirm"]
+        if 'password_new' in self.cleaned_data and 'password_new_confirm' in self.cleaned_data:
+            if self.cleaned_data['password_new'] != self.cleaned_data['password_new_confirm']:
+                raise forms.ValidationError(u'两次新密码不一致！')
+        return self.cleaned_data['password_new_confirm']

@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}XXX主页{% endblock %}
+{% block content %}
+<link href="{{ STATIC_URL }}datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/"><img src="{{ STATIC_URL }}images/logo1.png" alt="Brand" style="margin-top: -11px" title="PII提取系统"></a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="{% url 'home' username=user.username %}">菜单一</a></li>
+            <li><a href="#">菜单二</a></li>
+        </ul>
+        <div id="navbar" class="collapse navbar-collapse navbar-right">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-user"></i>{{ user.first_name }}<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{% url 'profile' username=user.username %}"><i class="glyphicon glyphicon-user"></i>个人资料</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{% url 'logout' %}"><i class="glyphicon glyphicon-off"></i>退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="panel panel-success" style="margin: 1px auto; max-width: 480px">
+        <div class="panel-heading" align="center">
+            <h3 class="panel-title">XXXXXXX</h3>
+        </div>
+        <div class="panel-body">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="data_group" class="control-label">类型：</label>
+                    <select id="data_group" name="data_group" class="form-control">
+                        <option value="baoxian" {% if data_group == "baoxian" %}selected{% endif %}>保险</option>
+                        <option value="jinrong" {% if data_group == "jinrong" %}selected{% endif %}>金融</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="dtp_input1" class="control-label">时间：</label>
+                    <div class="input-group date form_date" data-date-format="yyyy-mm-dd" data-link-field="dtp_input1">
+                        <input name="date" class="form-control" size="12" type="text" value="{{ date }}" placeholder="默认前一天日期" readonly>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                    </div>
+                </div>
+                <div class="checkbox">
+                    <label><input name="filter_flag" type="checkbox" {% if filter_flag %}checked{% endif %} disabled>电话虫过滤</label>
+                </div>
+                {% include '_messages.html' %}
+                <div class="form-group left-inner-addon">
+                    <button type="submit" class="btn btn-success btn-lg btn-block">提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="{{ STATIC_URL }}jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}datetimepicker/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        minView: 1
+    });
+    $('.form_date').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    });
+    $('.form_time').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 1,
+        minView: 0,
+        maxView: 1,
+        forceParse: 0
+    });
+</script>
+{% endblock %}
