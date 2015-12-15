@@ -37,3 +37,7 @@ class ChangePasswordForm(forms.Form):
             if self.cleaned_data['password_new'] != self.cleaned_data['password_new_confirm']:
                 raise forms.ValidationError(u'两次新密码不一致！')
         return self.cleaned_data['password_new_confirm']
+
+    def clean(self):
+        cleaned_data = super(ChangePasswordForm, self).clean()
+        print 'clean---------------------------'

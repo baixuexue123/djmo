@@ -2,7 +2,7 @@
 
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .views import LoginView, ChangePasswordView, logout_view, profile_view, change_pwd_done
 
