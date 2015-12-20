@@ -10,6 +10,10 @@
     <link rel="icon" href="{{ STATIC_URL }}images/favicon.ico">
     <title>PII提取系统 - {% block title %}{% endblock %}</title>
     <link href="{{ STATIC_URL }}bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
 {% block content %}{% endblock %}
