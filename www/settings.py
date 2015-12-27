@@ -33,6 +33,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
+    'app_interface_db',
 )
 
 
@@ -69,6 +70,20 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
+    'app_db': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'xxx',
+        'USER': 'root',
+        'PASSWORD': '35535',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    },
+}
+
+# use multi-database in django
+DATABASE_ROUTERS = ['database_router.DatabaseAppsRouter']
+DATABASE_APPS_MAPPING = {
+    'app_interface_db': 'app_db',
 }
 
 # Internationalization
@@ -82,7 +97,6 @@ USE_I18N = True
 USE_L10N = False
 
 USE_TZ = False
-
 
 # Static files (CSS, JavaScript, Images)
 
@@ -102,7 +116,16 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 
-
 # False:会话cookie可以在用户浏览器中保持有效期(True:关闭浏览器,则Cookie失效.)
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_COOKIE_AGE = 60*60*24  # 一天
+
+
+FILE_UPLOAD_HANDLERS = (
+    "django.core.files.uploadhandler.TemporaryFileUploadHandler",
+    "django.core.files.uploadhandler.MemoryFileUploadHandler",
+)
+
+FILE_UPLOAD_MAX_MEMORY_SIZE = 2621440  # 2.5MB
+
+FILE_UPLOAD_TEMP_DIR = os.path.join(BASE_DIR, 'media/temp/')
