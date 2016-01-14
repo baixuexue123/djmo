@@ -4,11 +4,9 @@ Django settings for syndra project.
 """
 
 import os
-import sys
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
-sys.path.insert(0, os.path.join(BASE_DIR, 'libs'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'xw*(ru+tu7f0%gjdzz3-p8)v6e=_@!a*rb_v#n*-l2^*%3o5*x'
