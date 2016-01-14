@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Django settings for syndra project.
-"""
 
 import os
 
@@ -31,7 +28,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
-    'app_interface_db',
+    'legacy',
 )
 
 
@@ -79,9 +76,9 @@ DATABASES = {
 }
 
 # use multi-database in django
-DATABASE_ROUTERS = ['database_router.DatabaseAppsRouter']
+DATABASE_ROUTERS = ['utils.database_router.DatabaseAppsRouter']
 DATABASE_APPS_MAPPING = {
-    'app_interface_db': 'app_db',
+    'legacy': 'app_db',
 }
 
 # Internationalization
