@@ -51,7 +51,7 @@ class ExportCsv(object):
     def write_rows(self, rows):
         assert hasattr(rows, '__iter__'), 'rows must be iterable'
         for row in rows:
-            self.writer.writerow(row)
+            self.write_row(row)
 
     def csv_response(self):
         return self.response

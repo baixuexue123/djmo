@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -7,9 +8,9 @@
     <meta name="description" content="Pysaoke">
     <meta name="keywords" content="Pysaoke">
     <meta name="author" content="Pysaoke">
-    <link rel="icon" href="{{ STATIC_URL }}images/favicon.ico">
+    <link rel="icon" href="{% static "images/favicon.ico" %}">
     <title>XXX系统 - {% block title %}{% endblock %}</title>
-    <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
@@ -17,7 +18,7 @@
 </head>
 <body>
 {% block content %}{% endblock %}
-    <script src="{{ STATIC_URL }}jquery/jquery-1.11.3.min.js"></script>
-    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
+    <script src={% static "jquery/jquery-1.11.3.min.js" %}></script>
+    <script src={% static "bootstrap/js/bootstrap.min.js" %}></script>
 </body>
 </html>
