@@ -6,9 +6,9 @@ import importlib
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 
-import pytz
-
 from appconf import AppConf
+
+import pytz
 
 
 def load_path_attr(path):

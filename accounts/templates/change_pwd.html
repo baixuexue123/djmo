@@ -1,10 +1,11 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% block title %}修改密码{% endblock %}
 {% block content %}
 <nav class="navbar navbar-inverse navbar-static-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/"><img src="{{ STATIC_URL }}images/logo1.png" alt="Brand" style="margin-top: -11px" title="PII提取系统"></a>
+            <a class="navbar-brand" href="/"><img src="{% static "images/logo1.png" %}" alt="Brand" style="margin-top: -11px" title="XXX系统"></a>
         </div>
         <ul class="nav navbar-nav">
             <li><a href="{% url 'home' username=user.username %}">菜单一</a></li>

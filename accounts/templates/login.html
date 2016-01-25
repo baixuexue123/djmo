@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
@@ -7,19 +8,19 @@
     <meta name="description" content="100Credit">
     <meta name="keywords" content="100Credit">
     <meta name="author" content="100Credit">
-    <link rel="icon" href="{{ STATIC_URL }}images/favicon.ico">
+    <link rel="icon" href="{% static "images/favicon.ico" %}">
     <title>XXX系统--登录</title>
-    <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
 </head>
 <body>
     <style type="text/css">
-        body { background-image: url("{{ STATIC_URL }}images/bg.jpg");}
-        .left-inner-addon { position: relative; }
-        .left-inner-addon input, .left-inner-addon textarea { padding-left: 30px; }
-        .left-inner-addon span { position: absolute; padding: 15px 12px; }
-        .left-inner-addon button { padding: 10px; }
+        body { background-image: url("{% static "images/bg.jpg" %}");}
+        .left-inner-addon { position: relative;}
+        .left-inner-addon input, .left-inner-addon textarea { padding-left: 30px;}
+        .left-inner-addon span { position: absolute; padding: 15px 12px;}
+        .left-inner-addon button { padding: 10px;}
     </style>
-    <img src="{{ STATIC_URL }}images/logo1.png" class="img-responsive" alt="Responsive image" style="margin: 10px 0 10px 10px">
+    <img src="{% static "images/logo1.png" %}" class="img-responsive" alt="Responsive image" style="margin: 10px 0 10px 10px">
 
     <div class="modal show" style="margin-top: 150px;">
         <div class="modal-dialog">
@@ -49,9 +50,9 @@
     </div>
 
     <div class="container navbar-fixed-bottom">
-        <p align="center" style="font-size: 14px">Copyright © 2015 百融（北京）金融信息服务股份有限公司 All Rights Reserved.</p>
+        <p align="center" style="font-size: 14px">Copyright © 2016 百融（北京）金融信息服务股份有限公司 All Rights Reserved.</p>
     </div>
-    <script src="{{ STATIC_URL }}jquery/jquery-1.11.3.min.js"></script>
+    <script src="{% static %}jquery/jquery-1.11.3.min.js"></script>
     <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

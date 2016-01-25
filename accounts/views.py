@@ -34,7 +34,6 @@ class LoginView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         form = LoginForm(request.POST)
-
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']

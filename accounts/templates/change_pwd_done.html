@@ -1,10 +1,11 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% block title %}密码修改成功{% endblock %}
 {% block content %}
 <nav class="navbar navbar-inverse navbar-static-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/"><img src="{{ STATIC_URL }}images/logo1.png" alt="Brand" style="margin-top: -11px" title="PII提取系统"></a>
+            <a class="navbar-brand" href="/"><img src="{% static "images/logo1.png" %}" alt="Brand" style="margin-top: -11px" title="XXX系统"></a>
         </div>
         <ul class="nav navbar-nav">
             <li><a href="{% url 'home' username=user.username %}">菜单一</a></li>
@@ -25,15 +26,15 @@
     </div>
 </nav>
 <script>
-    var time = 3;
-    function update(){
-        document.getElementById("count").innerHTML = time;
-        time = time - 1;
-        if (time==0){
-            location.href = "{% url 'profile' username=user.username %}";
-        }
+var time = 3;
+function update(){
+    document.getElementById("count").innerHTML = time;
+    time = time - 1;
+    if (time==0){
+        location.href = "{% url 'profile' username=user.username %}";
     }
-    setInterval("update()", 1000);
+}
+setInterval("update()", 1000);
 </script>
 <div class="container" style="color: #180aff;">
     <h2>密码修改成功!</h2>
