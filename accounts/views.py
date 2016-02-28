@@ -24,7 +24,6 @@ def home(request, username):
 
 
 class LoginView(TemplateView):
-
     template_name = 'login.html'
 
     def get(self, request, *args, **kwargs):
@@ -69,7 +68,6 @@ def change_pwd_done(request):
 
 
 class ChangePasswordView(LoginRequiredMixin, TemplateView):
-
     template_name = 'change_pwd.html'
 
     def get(self, request, *args, **kwargs):
