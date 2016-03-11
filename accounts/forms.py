@@ -5,7 +5,6 @@ from django import forms
 
 
 class LoginForm(forms.Form):
-
     username = forms.CharField(max_length=24)
     password = forms.CharField(max_length=24)
 
@@ -15,7 +14,6 @@ class LoginForm(forms.Form):
 
 
 class ChangePasswordForm(forms.Form):
-
     password_current = forms.CharField(max_length=24)
     password_new = forms.CharField(max_length=24)
     password_new_confirm = forms.CharField(max_length=24)

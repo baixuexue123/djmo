@@ -6,7 +6,8 @@ from django.contrib.auth.models import User
 
 
 class Role(models.Model):
-    role = models.CharField(max_length=32)
+    name = models.CharField(max_length=64)
+    alias = models.CharField(max_length=64)
 
     class Meta:
         verbose_name = u'角色'
@@ -14,7 +15,7 @@ class Role(models.Model):
         ordering = ['id']
 
     def __unicode__(self):
-        return self.role
+        return self.name
 
 
 class Profile(models.Model):
@@ -29,8 +30,8 @@ class Profile(models.Model):
     privilege = models.IntegerField(choices=PRIVILEGE_CHOICES, default=1, verbose_name=u'权限')
 
     class Meta:
-        verbose_name = u'附加信息'
-        verbose_name_plural = u'附加信息列表'
+        verbose_name = u'个人信息'
+        verbose_name_plural = u'个人信息列表'
         ordering = ['id']
 
     def __unicode__(self):
