@@ -7,7 +7,6 @@ from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 
 from appconf import AppConf
-
 import pytz
 
 
