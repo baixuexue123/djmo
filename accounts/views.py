@@ -41,7 +41,7 @@ class LoginView(TemplateView):
                 login(request, user)
                 return redirect('/%s/' % user.username)
             else:
-                error_msg = u'用户名或密码错误！'
+                error_msg = '用户名或密码错误！'
         else:
             error_msg = form.errors.items()[0][1]
         messages.info(request, error_msg)

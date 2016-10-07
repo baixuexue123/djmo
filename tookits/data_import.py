@@ -11,8 +11,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "www.settings")
 
 # Django 版本>=1.7时，需要加下面两句,否则会抛出错误 django.core.exceptions.AppRegistryNotReady: Models aren't loaded yet.
 import django
-if django.VERSION >= (1, 7):
-    django.setup()
+django.setup()
 
 from interface_dpi.models import DpiTagJrCellOutput
 from interface_phone_dog.models import Task, RePhone

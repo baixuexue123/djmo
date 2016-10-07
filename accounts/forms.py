@@ -26,13 +26,13 @@ class ChangePasswordForm(forms.Form):
 
     def clean_password_current(self):
         if not self.user.check_password(self.cleaned_data.get('password_current')):
-            raise forms.ValidationError(u'原始密码错误')
+            raise forms.ValidationError('原始密码错误')
         return self.cleaned_data['password_current']
 
     def clean_password_new_confirm(self):
         if 'password_new' in self.cleaned_data and 'password_new_confirm' in self.cleaned_data:
             if self.cleaned_data['password_new'] != self.cleaned_data['password_new_confirm']:
-                raise forms.ValidationError(u'两次新密码不一致！')
+                raise forms.ValidationError('两次新密码不一致！')
         return self.cleaned_data['password_new_confirm']
 
     def clean(self):

@@ -17,7 +17,7 @@ class RoleAdmin(admin.ModelAdmin):
 class ProfileInline(admin.StackedInline):
     model = Profile
     can_delete = False
-    verbose_name_plural = u'附加信息列表'
+    verbose_name_plural = '附加信息列表'
 
 
 # Define a new User admin
@@ -29,7 +29,7 @@ class CustomUserAdmin(UserAdmin):
 
     def role(self, obj):
         return obj.profile.role.role
-    role.short_description = u'角色'
+    role.short_description = '角色'
 
 
 # Re-register UserAdmin
